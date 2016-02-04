@@ -3,26 +3,28 @@ import { render } from 'react-dom';
 
 import ol from 'openlayers';
 
-const placeLayer = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    format: new ol.format.GeoJSON(),
-    url: './OSGEoLabs.json'
+let localserve = new ol.layer.Tile({
+  source: new ol.source.OSM({
+    url: 'http://localhost/osm_tiles/{z}/{x}/{y}.png'
   })
-})
+});
 
 const map = new ol.Map({
   target: 'map',
   layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM()
-    }),
-    placeLayer
+    localserve
   ],
   view: new ol.View({
-    center: [949282, 6002552],
-    zoom: 4
+    center: [14.60966442647526, 121.10607147216795],
+    zoom: 20
   })
 });
+
+console.log(map.events);
+
+//', map, (e) => {
+//  console.log(map.getLonLatFromViewPortPx(e.xy));
+//});
 
 class App extends Component {
   render() {
