@@ -15,16 +15,13 @@ const map = new ol.Map({
     localserve
   ],
   view: new ol.View({
-    center: [14.60966442647526, 121.10607147216795],
-    zoom: 20
+    center: [
+      13481363.197416633,
+      1644099.866239368
+    ],
+    zoom: 18
   })
 });
-
-console.log(map.events);
-
-//', map, (e) => {
-//  console.log(map.getLonLatFromViewPortPx(e.xy));
-//});
 
 class App extends Component {
   render() {
